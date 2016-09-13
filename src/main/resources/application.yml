@@ -1,0 +1,9 @@
+#zuul:
+#   retryable: false  #Set this property to false to disable all retry logic in Zuul
+#  routes:
+#    route1:
+#      path: /route1/**
+#       retryable: true  #If you will be making requests other than GETs that you want to be retryable than set this property to true
+
+#ribbon:
+#  OkToRetryOnAllOperations: true  #If you set this to true than all requests for all routes will be retryable
