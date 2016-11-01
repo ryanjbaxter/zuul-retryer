@@ -1,9 +1,26 @@
-#zuul:
+zuul:
 #   retryable: false  #Set this property to false to disable all retry logic in Zuul
-#  routes:
-#    route1:
-#      path: /route1/**
+  routes:
+    zuul-app:
+      path: /self/**
 #       retryable: true  #If you will be making requests other than GETs that you want to be retryable than set this property to true
 
-#ribbon:
-#  OkToRetryOnAllOperations: true  #If you set this to true than all requests for all routes will be retryable
+ribbon:
+  MaxAutoRetries: 3
+  MaxAutoRetriesNextServer: 3
+  OkToRetryOnAllOperations: true  #If you set this to true than all requests for all routes will be retryable
+
+# Sometimes it is necessary to configure the timeout value for the Hystrix commands wrapping the routes.
+# If you notice Hystrix timeout exceptions in the course of Zuul retrying your requests you should consider
+# adjusting the below property.
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 100000
+
+spring:
+  application:
+    name: zuul-app

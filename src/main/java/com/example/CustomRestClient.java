@@ -1,5 +1,8 @@
 package com.example;
 
+import java.net.URI;
+import org.springframework.cloud.netflix.ribbon.RibbonUtils;
+import org.springframework.cloud.netflix.ribbon.ServerIntrospector;
 import com.netflix.client.RequestSpecificRetryHandler;
 import com.netflix.client.config.CommonClientConfigKey;
 import com.netflix.client.config.IClientConfig;
@@ -9,10 +12,6 @@ import com.netflix.loadbalancer.Server;
 import com.netflix.niws.client.http.RestClient;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
-import org.springframework.cloud.netflix.ribbon.RibbonUtils;
-import org.springframework.cloud.netflix.ribbon.ServerIntrospector;
-
-import java.net.URI;
 
 /* Most of this code comes from RibbonClientConfiguration.OverrideRestClient but we can't extend
  * that class directly.  the only custom code here is in the execute method.  In addition
